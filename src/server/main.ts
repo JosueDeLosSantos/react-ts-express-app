@@ -10,9 +10,13 @@ process.loadEnvFile();
 
 const app = express();
 
+const PORT = process.env.VITE_PORT || 3000;
+
 app.get("/hello", async (_, res) => {
 	const { rows } = await getAllUsernames();
 	res.json({ users: rows });
 });
 
-ViteExpress.listen(app, 3000, () => console.log("Server is listening on port 3000..."));
+ViteExpress.listen(app, Number(PORT), () =>
+	console.log("Server is listening on port 3000...")
+);
