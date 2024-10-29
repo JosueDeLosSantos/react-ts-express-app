@@ -10,6 +10,8 @@ process.loadEnvFile();
  */
 
 const app = express();
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
 // adds cors middleware that accepts requests from any origin
 app.use(cors());
