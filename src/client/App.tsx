@@ -1,42 +1,17 @@
-import "./App.css";
-
-import { useEffect, useState } from "react";
-
-import reactLogo from "./assets/react.svg";
+import { Link } from "react-router-dom";
 
 function App() {
-	const [count, setCount] = useState(0);
-	const [message, setMessage] = useState("");
-
-	useEffect(() => {
-		fetch("/hello")
-			.then((res) => res.json())
-			.then((data) => setMessage(data.message));
-	}, []);
-
 	return (
-		<div className='App'>
-			<div>
-				<a href='https://vitejs.dev' target='_blank'>
-					<img src='/vite.svg' className='logo' alt='Vite logo' />
-				</a>
-				<a href='https://reactjs.org' target='_blank'>
-					<img src={reactLogo} className='logo react' alt='React logo' />
-				</a>
-			</div>
-			<h1>Vite + React</h1>
-			<h2>{message}</h2>
-			<div className='card'>
-				<button onClick={() => setCount((count) => count + 1)}>
-					count is {count}
+		<div className='flex flex-col items-center p-16 font-bold text-3xl'>
+			<h1>User's club</h1>
+			<Link to='/hello2'>
+				<button
+					type='button'
+					className='bg-gray-300 border mt-8 border-gray-500 rounded px-4 py-2 font-semibold'
+				>
+					Show all users
 				</button>
-				<p>
-					Edit <code>src/App.tsx</code> and save to test HMR
-				</p>
-			</div>
-			<p className='read-the-docs'>
-				Click on the Vite and React logos to learn more
-			</p>
+			</Link>
 		</div>
 	);
 }
