@@ -1,6 +1,7 @@
 import express from "express";
 import ViteExpress from "vite-express";
 import { getAllUsernames } from "./db/queries.js";
+import cors from "cors";
 process.loadEnvFile();
 /* env variables should have the prefix VITE_
  * and be in the format VITE_CONNECTION_STRING="********"
@@ -9,6 +10,9 @@ process.loadEnvFile();
  */
 
 const app = express();
+
+// adds cors middleware that accepts requests from any origin
+app.use(cors());
 
 const PORT = process.env.VITE_PORT || 3000;
 
